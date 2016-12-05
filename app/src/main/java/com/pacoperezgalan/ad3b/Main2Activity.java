@@ -17,16 +17,16 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         nombre=(TextView) findViewById(R.id.tv_nombre);
-        dni=(TextView) findViewById(R.id.tv_nombre);
-        fecha=(TextView) findViewById(R.id.tv_nombre);
-        sexo=(TextView) findViewById(R.id.tv_nombre);
+        dni=(TextView) findViewById(R.id.tv_dni);
+        fecha=(TextView) findViewById(R.id.tv_fecha);
+        sexo=(TextView) findViewById(R.id.tv_sexo);
 
         SharedPreferences preferencias=getSharedPreferences("pref", Activity.MODE_PRIVATE);
 
-        nombre.setText(preferencias.getString("nombre",""));
-        dni.setText(preferencias.getInt("dni",0));
-        fecha.setText(preferencias.getString("fecha",""));
-        sexo.setText(preferencias.getString("sexo",""));
+        nombre.setText("Nombre: "+preferencias.getString("nombre",""));
+        dni.setText("DNI: "+preferencias.getString("dni",""));
+        fecha.setText("Fecha de nacimiento: "+preferencias.getString("fecha",""));
+        sexo.setText("Sexo: "+preferencias.getString("sexo",""));
 
     }
 }

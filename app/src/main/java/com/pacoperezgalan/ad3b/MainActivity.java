@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         dni=(EditText) findViewById(R.id.et_dni);
         fecha=(EditText) findViewById(R.id.et_fecha);
         sexo=(RadioGroup) findViewById(R.id.rg_sexo);
+        preferencias=(Button) findViewById(R.id.btn_almacenar);
 
         preferencias.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor=preferencias.edit();
 
                 editor.putString("nombre",nombre.getText().toString());
-                editor.putInt("dni",Integer.parseInt(dni.getText().toString()));
+                editor.putString("dni",dni.getText().toString());
                 editor.putString("fecha",fecha.getText().toString());
                 if(sexo.getCheckedRadioButtonId()==R.id.radioButton) {
                     editor.putString("sexo","Masculino");
                 }else{
                     editor.putString("sexo","Femenino");
                 }
+
+                editor.commit();
 
                 Intent i=new Intent(getApplicationContext(),Main2Activity.class);
                 startActivity(i);
